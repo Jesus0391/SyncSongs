@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@ViewData["response"]
+
+<div>
+    <input type="search" id="search" />
+    <input type="button" class="btn btn-info" value="Search" id="btnSearch" />
+    <label id="response"></label>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSearch").click(function () {
+                $.getJSON("https://api.spotify.com/v1/search", { q: $("#search").val(), type: "track,artist" }, function (response) {
+                    $("#response").text(response);
+                });
+
+            });
+
+        });
+    </script>
+ }

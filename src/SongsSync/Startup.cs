@@ -52,6 +52,8 @@ namespace SongsSync
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            //Inject Accounts   
+            services.Configure<ExternalAccounts>(Configuration.GetSection("ExternalAccount"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,6 +12,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SongsSync", "src\SongsSync\SongsSync.xproj", "{6EAF88C5-BB85-4CDA-B6F0-7502ED821C2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongSync.Api", "SongSync.Api\SongSync.Api.csproj", "{13EA3DDF-E96F-421E-88A8-04D0B5C128B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongSync.Api.Tests", "SongSync.Api.Tests\SongSync.Api.Tests.csproj", "{41EC3B3C-CB2A-45F4-B3C9-81E9A93641CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{311AF736-F368-4521-BD4E-D574C8091BBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongSync.Services", "SongSync.Services\SongSync.Services.csproj", "{F541395E-16C8-42AA-BF12-38E40A239F28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongSync.Models", "SongSync.Models\SongSync.Models.csproj", "{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +32,30 @@ Global
 		{6EAF88C5-BB85-4CDA-B6F0-7502ED821C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EAF88C5-BB85-4CDA-B6F0-7502ED821C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EAF88C5-BB85-4CDA-B6F0-7502ED821C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13EA3DDF-E96F-421E-88A8-04D0B5C128B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13EA3DDF-E96F-421E-88A8-04D0B5C128B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EA3DDF-E96F-421E-88A8-04D0B5C128B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13EA3DDF-E96F-421E-88A8-04D0B5C128B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41EC3B3C-CB2A-45F4-B3C9-81E9A93641CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41EC3B3C-CB2A-45F4-B3C9-81E9A93641CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41EC3B3C-CB2A-45F4-B3C9-81E9A93641CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41EC3B3C-CB2A-45F4-B3C9-81E9A93641CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F541395E-16C8-42AA-BF12-38E40A239F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F541395E-16C8-42AA-BF12-38E40A239F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F541395E-16C8-42AA-BF12-38E40A239F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F541395E-16C8-42AA-BF12-38E40A239F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6EAF88C5-BB85-4CDA-B6F0-7502ED821C2C} = {1529E0FA-B10D-47CB-ABA9-D480111D0E98}
+		{13EA3DDF-E96F-421E-88A8-04D0B5C128B8} = {311AF736-F368-4521-BD4E-D574C8091BBE}
+		{F541395E-16C8-42AA-BF12-38E40A239F28} = {311AF736-F368-4521-BD4E-D574C8091BBE}
+		{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3} = {311AF736-F368-4521-BD4E-D574C8091BBE}
 	EndGlobalSection
 EndGlobal

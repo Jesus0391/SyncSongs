@@ -11,6 +11,10 @@ using Microsoft.Extensions.Logging;
 using SongsSync.Models;
 using SongsSync.Models.AccountViewModels;
 using SongsSync.Services;
+using Microsoft.Extensions.Options;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace SongsSync.Controllers
 {
@@ -22,19 +26,22 @@ namespace SongsSync.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private readonly IOptions<ExternalAccounts> _externalAccount;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            IOptions<ExternalAccounts> options)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _externalAccount = options;
         }
 
         //
@@ -434,6 +441,40 @@ namespace SongsSync.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid code.");
                 return View(model);
             }
+        }
+
+        [Authorize]
+        public async Task<IActionResult> AddExternal()
+        {
+           ViewData["Id"] = _externalAccount.Value.Spotify.Id;
+            return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> SpotifyCallBack(string code)
+        {
+            /*
+                                 client_id = _externalAccount.Value.Spotify.Id,
+                    client_secret = _externalAccount.Value.Spotify.I
+             */
+            using (HttpClient client = new HttpClient())
+            {
+                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes($"{_externalAccount.Value.Spotify.Id}:{_externalAccount.Value.Spotify.Secret}");
+                var baseEnconde =  System.Convert.ToBase64String(plainTextBytes);
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Basic {baseEnconde}");
+
+
+                var parameters = new Dictionary<string, string> {
+                                                    { "grant_type", "authorization_code" },
+                                                    { "code", code },
+                    {"redirect_uri", _externalAccount.Value.Spotify.Redirect } };
+                var encodedContent = new FormUrlEncodedContent(parameters);
+
+                var response =
+                         await client.PostAsync("https://accounts.spotify.com/api/token", encodedContent);
+                ViewData["code"] = response.Content.ReadAsStringAsync().Result;
+            }
+            return View();
         }
 
         #region Helpers

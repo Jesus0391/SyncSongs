@@ -1,0 +1,9 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var url = $"https://accounts.spotify.com/authorize/?client_id={ViewData["id"]}&response_type=code&redirect_uri={"http://localhost:57215/Account/SpotifyCallback/"}&scope=user-read-private%20user-read-email&state=34fFs29kd09";
+}
+<a href="@url" class="btn btn-success">
+    Add Spotify Account
+</a>

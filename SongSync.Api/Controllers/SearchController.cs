@@ -53,7 +53,7 @@ namespace SongSync.Api.Controllers
                                     AlbumName = r.Album.Name,
                                     Popularity = r.Popularity,
                                     Type = r.Album.type,
-                                    Url = r.Href,
+                                    Url = $"https://embed.spotify.com/?uri={r.Uri}",
                                     UrlPreview = r.Preview_Url
                                 }).ToList();
                         account.Results.AddRange(track);
@@ -65,7 +65,7 @@ namespace SongSync.Api.Controllers
                         {
                             Name = r.Snippet.Title,
                             Id  = r.Id.VideoId,
-                            Url = $"https://www.youtube.com/embed/{r.Id.VideoId}?autoplay=0",
+                            Url = $"https://www.youtube.com/embed/{r.Id.VideoId}?autoplay=1",
                             Type = "Video"
                         }).ToList();
                         account.Results.AddRange(videos);

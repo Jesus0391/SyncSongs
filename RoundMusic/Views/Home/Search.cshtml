@@ -3,8 +3,6 @@
     ViewBag.Title = "Search";
 }
 
-<h2>Search</h2>
-
 <form onsubmit="return search()">
     <div>
       <input type="text" placeholder="Search artist, song" id="q" />
@@ -12,7 +10,11 @@
             <i class="glyphicon glyphicon-search">&nbsp;</i>
             Search
         </button>
-    <hr />
+
+       <hr />
+        <iframe id="ytplayer" type="text/html" width="640" height="360"
+                src=""
+                frameborder="0"></iframe>
       <div id="results">
 
       </div>
@@ -27,6 +29,15 @@
                 search();
             })
         });
+        function play(url) {
+            $("#ytplayer").attr("src", url);
+            if (url.indexOf("spotify")) {
+                setTimeout(function () {
+                    console.log("click");
+                    $("#ytplayer #play-button").click();
+                }, 4000);
+            }
+        }
 
         function search() {
             $.get("@Url.Action("Index", "Search")", { q: $("#q").val() }, function (response) {

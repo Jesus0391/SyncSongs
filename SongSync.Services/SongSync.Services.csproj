@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\IModelService.cs" />
     <Compile Include="Interfaces\IServices.cs" />
     <Compile Include="ResponseModels\SpotifyModel.cs" />
+    <Compile Include="ResponseModels\YotubeModel.cs" />
     <Compile Include="SpotifyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YoutubeService.cs" />
@@ -61,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SongSync.Models\SongSync.Models.csproj">
-      <Project>{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3}</Project>
+      <Project>{75f8abc8-9265-41b8-9857-9bf9094254e7}</Project>
       <Name>SongSync.Models</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "exports": {
+    "SongSync.Models/1.0.0": {
+      "type": "project",
+      "framework": ".NETStandard,Version=v1.3",
+      "compile": {
+        "bin/Debug/SongSync.Models.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/SongSync.Models.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/SongSync.Models.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

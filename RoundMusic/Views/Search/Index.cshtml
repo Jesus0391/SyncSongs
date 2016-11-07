@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SongSync.Models.Account>
+@{
+    var accounts = Model.Where(m => m.Name != "").Select(n => n.Name).Distinct();
+    Layout = null;
+}
+<div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#all" aria-controls="all" role="tab" data-toggle="tab">Matchs</a>
+        </li>
+        @foreach (var account in accounts)
+        {
+            <li role="presentation" class="">
+                <a href="#@account" aria-controls="@account" role="tab" data-toggle="tab">@account</a>
+            </li>
+        }
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="all">...</div>
+        @foreach (var account in accounts)
+        {
+            <div role="tabpanel" class="tab-pane active" id="@account">
+                @{
+                    var results = Model.Where(n => n.Name == account).FirstOrDefault();
+                    if (results.Results != null)
+                    {
+                        foreach (var result in results.Results)
+                        {
+
+                            <div>
+                                <div class="result">
+                                    <h3>
+                                        @result.Name
+                                    </h3>
+                                    <div class="subDescription">
+                                        @switch (result.Type.ToLower())
+                                        {
+                                            case "video":
+                                                <iframe id="ytplayer" type="text/html" width="640" height="360"
+                                                        src="@result.Url"
+                                                        frameborder="0" />
+                                                break;
+                                            default:
+                                                <audio src="@result.UrlPreview" controls="controls"></audio>
+                                                break;
+                                        }
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+                    }
+                    }
+            </div>
+         }
+        </div>
+
+    </div>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<form onsubmit="return search()">
+    <div>
+      <input type="text" placeholder="Search artist, song" id="q" />
+        <button type="button" id="btnSearch" class="btn btn-primary">
+            <i class="glyphicon glyphicon-search">&nbsp;</i>
+            Search
+        </button>
+    <hr />
+      <div id="results">
+
+      </div>
+    </div>
+
+</form>
+
+@section scripts{ 
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSearch").click(function () {
+                search();
+            })
+        });
+
+        function search() {
+            $.get("@Url.Action("Index", "Search")", { q: $("#q").val() }, function (response) {
+                $("#results").children().remove();
+                $("#results").append(response);
+            });
+
+            return false;
+        }
+    </script>
+}

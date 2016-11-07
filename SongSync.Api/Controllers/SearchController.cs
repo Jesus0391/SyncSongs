@@ -30,8 +30,10 @@ namespace SongSync.Api.Controllers
                 };
             }
             IServices _service;
+
             foreach (var account in accounts)
             {
+                account.Results = new List<SearchResult>();
                 //Casting 
                 switch (account.Name.ToLower())
                 {
@@ -40,7 +42,7 @@ namespace SongSync.Api.Controllers
                         var track = _service.Search<Services
                                 .ResponseModels.SpotifyModel>(q).Tracks.Items.Select(r => new SearchResult
                                 {
-                                    SongName = r.Name,
+                                    Name = r.Name,
                                     Artists = r.Album.Artists.Select(a => new Artist
                                     {
                                         Id = a.Id,
@@ -50,10 +52,23 @@ namespace SongSync.Api.Controllers
                                     }).ToList(),
                                     AlbumName = r.Album.Name,
                                     Popularity = r.Popularity,
-                                    type = r.Album.type,
-
+                                    Type = r.Album.type,
+                                    Url = r.Href,
+                                    UrlPreview = r.Preview_Url
                                 }).ToList();
-                        account.Results = track;
+                        account.Results.AddRange(track);
+                        break;
+                    case "youtube":
+                        _service = new YoutubeService();
+                        var response = _service.Search<Services.ResponseModels.YoutubeModel>(q);
+                        var videos = response.Items.Select(r => new SearchResult
+                        {
+                            Name = r.Snippet.Title,
+                            Id  = r.Id.VideoId,
+                            Url = $"https://www.youtube.com/embed/{r.Id.VideoId}?autoplay=0",
+                            Type = "Video"
+                        }).ToList();
+                        account.Results.AddRange(videos);
                         break;
                 }
             }

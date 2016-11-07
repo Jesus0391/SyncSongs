@@ -65,7 +65,13 @@
       "imports": [
         "dotnet5.6",
         "portable-net45+win8"
-      ]
+      ],
+      "dependencies": {
+        "SongSync.Models": {
+          "target": "project"
+        }
+
+      }
     }
   },
 

@@ -21,6 +21,9 @@ namespace SongSync.Services
             RestRequest request = new RestRequest("search");
             request.AddParameter("q", q);
             request.AddParameter("part", "snippet");
+            request.AddParameter("order", "viewCount");
+            request.AddParameter("type", "video");
+            request.AddParameter("key", "AIzaSyB8sgYMGHPolx92AdDBNVPM0NqimV63x3Q");
 
             //Variables de limites de busqueda o filtros
             //limit, offset

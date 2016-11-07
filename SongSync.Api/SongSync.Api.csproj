@@ -168,6 +168,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayListController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UnitOfWork.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -229,7 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SongSync.Models\SongSync.Models.csproj">
-      <Project>{7795EBB7-83D2-44E6-88AF-AADDE64ED7E3}</Project>
+      <Project>{75f8abc8-9265-41b8-9857-9bf9094254e7}</Project>
       <Name>SongSync.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\SongSync.Services\SongSync.Services.csproj">

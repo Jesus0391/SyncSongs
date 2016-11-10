@@ -20,10 +20,28 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="all">...</div>
+        <div role="tabpanel" class="tab-pane active" id="all">
+            ...
+        </div>
         @foreach (var account in accounts)
         {
-            <div role="tabpanel" class="tab-pane active" id="@account">
+            <div role="tabpanel" class="tab-pane" id="@account">
+                <div class="result">
+                    <div class="artist col-md-6">
+                        <b>
+                            Artist
+                        </b>
+
+                    </div>
+                    <div class="album col-md-3">
+                        <b>
+                            Album
+                        </b>
+                    </div>
+                    <div class="control col-md-3">
+
+                    </div>
+                </div>
                 @{
                     var results = Model.Where(n => n.Name == account).FirstOrDefault();
                     if (results.Results != null)
@@ -33,35 +51,28 @@
 
                             <div>
                                 <div class="result">
-                                    <h3>
+                                    <div class="artist col-md-6">
                                         @result.Name
-                                    </h3>
-                                    <div class="subDescription">
-                                        <a class="" onclick="play('@result.Url')">
-                                            <i class="glyphicon glyphicon-play-circle">&nbsp;</i>
-                                        </a>
-                                        @*@switch (result.Type.ToLower())
-                                        {
-                                            case "video":
-                                                <iframe id="ytplayer" type="text/html" width="640" height="360"
-                                                        src="@result.Url"
-                                                        frameborder="0" />
-                                                break;
-                                            default:
-                                              
-                                                <iframe src="@result.Url" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-                                                break;
-                                        }*@
                                     </div>
-
+                                    <div class="album col-md-3">
+                                        @result.AlbumName
+                                    </div>
+                                    <div class="control col-md-3">
+                                        <a class="" onclick="play('@result.Url')">
+                                            <i class="fa fa-play-circle-o fa-2x">&nbsp;</i>
+                                        </a>
+                                        <a class="">
+                                            <i class="fa fa-plus fa-2x">&nbsp;</i>
+                                        </a>
+                                    </div>
                                 </div>
 
                             </div>
                         }
                     }
-                    }
+                }
             </div>
-         }
-        </div>
-
+        }
     </div>
+
+</div>

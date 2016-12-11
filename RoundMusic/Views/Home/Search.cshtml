@@ -50,11 +50,11 @@
                 search();
             })
         });
-        function play(url,) {
+        function play(url) {
             $("#ytplayer").attr("src", url);
             if (url.indexOf("spotify")) {
                 setTimeout(function () {
-                    console.log("click");
+                    //console.log("click");
                     $("#ytplayer #play-button").click();
                 }, 4000);
             }

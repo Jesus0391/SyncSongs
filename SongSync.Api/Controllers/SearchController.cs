@@ -11,6 +11,7 @@ namespace SongSync.Api.Controllers
 {
     public class SearchController : ApiController
     {
+        [Authorize]
         public List<Account> Get([FromUri]string q, 
                 [FromBody]List<Account> accounts)
         {
